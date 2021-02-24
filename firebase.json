@@ -1,0 +1,57 @@
+{
+  "database": {
+    "rules": "database.rules.json"
+  },
+  "hosting": {
+    "public": "public",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "/",
+        "destination": "/index.html"
+      }
+    ],
+    "redirect":[
+      {
+        "source":"/menu.html",
+        "destination": "/menu"
+      },
+      {
+        "source":"/dashboard",
+        "destination": "/dashboard.html"
+      },
+      {
+        "source":"/rumah",
+        "destination": "/rumah.html"
+      },
+      {
+        "source":"/arus",
+        "destination": "/arus.html"
+      },
+      {
+        "source":"/cospi.html",
+        "destination": "/cospi"
+      },
+      {
+        "source":"/tegangan.html",
+        "destination": "/tegangan"
+      },
+      {
+        "source":"/pemakaian.html",
+        "destination": "/pemakaian"
+      },
+      {
+        "source":"/kontak.html",
+        "destination": "/kontak"
+      },
+      {
+        "source":"/user.html",
+        "destination": "/kontak"
+      }
+    ]
+  }
+}
