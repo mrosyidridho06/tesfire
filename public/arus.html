@@ -13,6 +13,7 @@
     <title>Energy Monitoring</title>
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/locale/id.min.js"></script> -->
     <script defer src="/__/firebase/8.2.6/firebase-database.js"></script>
+    <script defer src="/__/firebase/8.2.6/firebase-auth.js"></script>
     <!-- <script src="https://code.highcharts.com/highcharts.js"></script>
     <script src="https://code.highcharts.com/stock/modules/exporting.js"></script>
     <script src="https://code.highcharts.com/stock/modules/export-data.js"></script> -->
@@ -51,10 +52,10 @@
         <div class="bg-light border-right" id="sidebar-wrapper">
             <div class="sidebar-heading">Energy Monitoring</div>
             <div class="list-group list-group-flush">
-                <a class="list-group-item list-group-item-action bg-light text-center" href="/menu_button">
+                <a class="list-group-item list-group-item-action bg-light text-center" href="/menu.html">
                     Menu
                 </a>
-                <a class="list-group-item list-group-item-action bg-light" href="/dashboard_button">
+                <a class="list-group-item list-group-item-action bg-light" href="/dashboard.html">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                         class="feather feather-home">
@@ -63,7 +64,7 @@
                     </svg>
                     Dashboard <span class="sr-only">(current)</span>
                 </a>
-                <a class="list-group-item list-group-item-action bg-light" href="/arus_button">
+                <a class="list-group-item list-group-item-action bg-light" href="/arus.html">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                         class="feather feather-file">
@@ -72,7 +73,7 @@
                     </svg>
                     Arus
                 </a>
-                <a class="list-group-item list-group-item-action bg-light" href="/tegangan_button">
+                <a class="list-group-item list-group-item-action bg-light" href="/tegangan.html">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                         class="feather feather-file">
@@ -81,7 +82,7 @@
                     </svg>
                     Tegangan
                 </a>
-                <a class="list-group-item list-group-item-action bg-light" href="/cospi_button">
+                <a class="list-group-item list-group-item-action bg-light" href="/cospi.html">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                         class="feather feather-file">
@@ -90,7 +91,7 @@
                     </svg>
                     Cospi
                 </a>
-                <a class="list-group-item list-group-item-action bg-light" href="/pemakaian_button">
+                <a class="list-group-item list-group-item-action bg-light" href="/pemakaian.html">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                         class="feather feather-file">
@@ -99,7 +100,7 @@
                     </svg>
                     Pemakaian
                 </a>
-                <a class="list-group-item list-group-item-action bg-light" href="/user_button">
+                <a class="list-group-item list-group-item-action bg-light" href="/user.html">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                         class="feather feather-users">
@@ -110,7 +111,7 @@
                     </svg>
                     Add User
                 </a>
-                <a class="list-group-item list-group-item-action bg-light" href="/kontak_button">
+                <a class="list-group-item list-group-item-action bg-light" href="/kontak.html">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                         class="bi bi-envelope" viewBox="0 0 16 16">
                         <path

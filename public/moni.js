@@ -1,5 +1,15 @@
 function monitor() {
   var db = firebase.database().ref('PowerMetering/Home-Monitoring');
+
+  var ambilkwh = firebase.database().ref('PowerMetering/Home-Monitoring/Power-Consumption');
+  
+  // inputharga.addEventListener('keyup', function(e){
+  console.log(ambilkwh+'INI KWH');
+  // })
+    var inputharga = document.getElementById('harga').value;
+    var kwh = ambilkwh
+    alert(inputharga*kwh)
+    console.log(kwh)
   db.on('value', function(snap1){
     if(snap1.exists()){
       var dayach = snap1.child('Real-Power').val();
