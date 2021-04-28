@@ -11,10 +11,26 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Energy Monitoring</title>
+    <script defer src="/__/firebase/8.2.6/firebase-auth.js"></script>
+    <script defer src="/__/firebase/8.2.6/firebase-database.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <link rel="stylesheet" href="sidebar.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+    
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="/__/firebase/8.2.6/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="/__/firebase/8.2.6/firebase-analytics.js"></script>
+
+    <!-- Initialize Firebase -->
+    <script src="/__/firebase/init.js"></script>
+    <!-- <script src="https://www.gstatic.com/firebasejs/8.2.6/firebase-auth.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <script src="pemakaian.js"></script>
 
 
 </head>
@@ -137,7 +153,7 @@
                             
                         </div>
                     </div>
-                    <table class="table table-hover table-fixed">
+                    <table class="table table-hover table-fixed" id="myTable">
                         <tr>
                             <th>Apparent Power (VA)</th>
                             <th>Real Power (Watt)</th>
@@ -149,13 +165,13 @@
                         </tr>
 
                         <tr>
-                            <td id="daya_s_" align="center"></td>
-                            <td id="daya_p_" align="center"></td>
-                            <td id="tegangan_" align="center"></td>
-                            <td id="arus_" align="center"></td>
-                            <td id="cospi_" align="center"></td>
-                            <td id="pemakaian_" align="center"></td>
-                            <td id="biaya_" align="center"></td>
+                            <td id="daya_s" align="center"></td>
+                            <td id="daya_p" align="center"></td>
+                            <td id="tegangan" align="center"></td>
+                            <td id="arus" align="center"></td>
+                            <td id="cospi" align="center"></td>
+                            <td id="pemakaian" align="center"></td>
+                            <td id="biaya" align="center"></td>
                         </tr>
 
                     </table>
@@ -180,85 +196,6 @@
                 $("#wrapper").toggleClass("toggled");
             });
         </script> -->
-        <script src="sidebar.js"></script>
-        <script type="text/javascript">
-            setInterval(function ( ) {
-                var xhttp = new XMLHttpRequest();
-                xhttp.onreadystatechange = function() {
-                  if (this.readyState == 4 && this.status == 200) {
-                    document.getElementById("daya_s_").innerHTML = this.responseText;
-                  }
-                };
-                xhttp.open("GET", "/daya_s_", true);
-                xhttp.send();
-              }, 1000 ) ;
-
-              setInterval(function ( ) {
-                var xhttp = new XMLHttpRequest();
-                xhttp.onreadystatechange = function() {
-                  if (this.readyState == 4 && this.status == 200) {
-                    document.getElementById("daya_p_").innerHTML = this.responseText;
-                  }
-                };
-                xhttp.open("GET", "/daya_p_", true);
-                xhttp.send();
-              }, 1000 ) ;
-
-              setInterval(function ( ) {
-                var xhttp = new XMLHttpRequest();
-                xhttp.onreadystatechange = function() {
-                  if (this.readyState == 4 && this.status == 200) {
-                    document.getElementById("tegangan_").innerHTML = this.responseText;
-                  }
-                };
-                xhttp.open("GET", "/tegangan_", true);
-                xhttp.send();
-              }, 1000 ) ;
-
-              setInterval(function ( ) {
-                var xhttp = new XMLHttpRequest();
-                xhttp.onreadystatechange = function() {
-                  if (this.readyState == 4 && this.status == 200) {
-                    document.getElementById("arus_").innerHTML = this.responseText;
-                  }
-                };
-                xhttp.open("GET", "/arus_", true);
-                xhttp.send();
-              }, 1000 ) ;
-
-              setInterval(function ( ) {
-                var xhttp = new XMLHttpRequest();
-                xhttp.onreadystatechange = function() {
-                  if (this.readyState == 4 && this.status == 200) {
-                    document.getElementById("cospi_").innerHTML = this.responseText;
-                  }
-                };
-                xhttp.open("GET", "/cospi_", true);
-                xhttp.send();
-              }, 1000 ) ;
-
-              setInterval(function ( ) {
-                var xhttp = new XMLHttpRequest();
-                xhttp.onreadystatechange = function() {
-                  if (this.readyState == 4 && this.status == 200) {
-                    document.getElementById("pemakaian_").innerHTML = this.responseText;
-                  }
-                };
-                xhttp.open("GET", "/pemakaian_", true);
-                xhttp.send();
-              }, 1000 ) ;
-
-              setInterval(function ( ) {
-                var xhttp = new XMLHttpRequest();
-                xhttp.onreadystatechange = function() {
-                  if (this.readyState == 4 && this.status == 200) {
-                    document.getElementById("biaya_").innerHTML = this.responseText;
-                  }
-                };
-                xhttp.open("GET", "/biaya_", true);
-                xhttp.send();
-              }, 1000 ) ;
-        </script>
 </body>
 
 </html>

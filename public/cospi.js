@@ -2,14 +2,12 @@ function cospi(){
 
     var dt = new Date();
     var hari = dt.getFullYear()+'-'+dt.getHours()+':'+dt.getMinutes()+':'+dt.getSeconds()
-    console.log(hari)
-    // dt = ($rootScope.charts.mainChart.labels.push(dt.getDate() + "-" + (dt.getMonth() + 1)));
     var ctx = document.getElementById('myChart').getContext('2d');
     var myChart = new Chart(ctx, {
         type: 'line',
         values:'Cospi',
         data: {
-            labels: ["Cospi"],
+            labels: [hari],
             datasets: [{
                 label:'Cospi',
                 data: [{}],
@@ -43,25 +41,27 @@ function cospi(){
                         content: 'Test label'
                     }
                     }]
-                },
-                scales: {
-                    display:true,
-                    xAxes: {
-                        ticks: {
-                            callback: function(value) { 
-                                return new Date(value).toLocaleDateString('de-DE', {month:'short', year:'numeric'}); 
-                            },
-                        },
-                        type: 'datetime',
-                        distribution:'linear'
-                        }
-                    }
                 }
+            //     scales: {
+            //         display:true,
+            //         xAxes: [{
+            //             type: 'time',
+            //             // realtime: {
+            //             //     duration: 20000,
+            //             //     refresh: 1000,
+            //             //     delay: 1000,
+            //             //     onRefresh: onRefresh
+            //             // }
+            //         }]
+            // }
         }
+    }
     )
 
     function addData(chart, label, data) {
-        chart.data.labels.push(label);
+        var today = new Date();
+        var time = today.getFullYear()+'-'+today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+        chart.data.labels.push(time);
         chart.data.datasets.forEach((dataset) => {
             dataset.data.push(data);
         });
@@ -74,12 +74,24 @@ function cospi(){
         };
         chart.update();
     }
-    var valueRef = firebase.database().ref('PowerMetering/Home-Monitoring').child('Power-Factor');
+    // function onRefresh(chart,label, data) {
+    //     chart.config.data.datasets.forEach(function(dataset) {
+    //         dataset.data.push({
+    //             x: Date.now(),
+    //             y: []
+    //         });
+    //     });
+    // }
+    var valueRef = firebase.database().ref('PowerMetering/Home-Monitoring').child('Power-Factor').limitToLast(1);
+	var dt = new Date();
+    var date = dt.getFullYear()+'-'+dt.getHours()+':'+dt.getMinutes()+':'+dt.getSeconds()
     valueRef.on('value', function(snapshot) {
-        // removeData(myChart);
-        updateScale(myChart);
-        addData(myChart,hari,snapshot.val());
-        console.log(myChart)
+        snapshot.forEach(function(childSnapshot) {
+            var childData = childSnapshot.val();
+            updateScale(myChart);
+            addData(myChart,hari,childData);
+            console.log(myChart)
+        })
     });
 
 }

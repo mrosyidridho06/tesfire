@@ -1,72 +1,62 @@
 function monitor() {
-  var db = firebase.database().ref('PowerMetering/Home-Monitoring');
+  var db = firebase.database();
 
-  var ambilkwh = firebase.database().ref('PowerMetering/Home-Monitoring/Power-Consumption');
-  
-  // inputharga.addEventListener('keyup', function(e){
-  console.log(ambilkwh+'INI KWH');
-  // })
-    var inputharga = document.getElementById('harga').value;
-    var kwh = ambilkwh
-    alert(inputharga*kwh)
-    console.log(kwh)
-  db.on('value', function(snap1){
-    if(snap1.exists()){
-      var dayach = snap1.child('Real-Power').val();
-      document.getElementById("daya_p").innerHTML = dayach;
-      console.log(dayach);
-      
-    }
+  const dayas = document.getElementById('daya_s');
+  const idwatt = document.getElementById('daya_p');
+  const idvolt = document.getElementById('tegangan');
+  const idarus = document.getElementById('arus');
+  const idcospi = document.getElementById('cospi');
+  const idkwh = document.getElementById('pemakaian');
+
+  var daya_s = db.ref('PowerMetering/Home-Monitoring').child('Apparent-Power');
+  var watt = db.ref('PowerMetering/Home-Monitoring').child('Real-Power');
+  var volt = db.ref('PowerMetering/Home-Monitoring').child('Vrms');
+  var arus = db.ref('PowerMetering/Home-Monitoring').child('Irms');
+  var cospi = db.ref('PowerMetering/Home-Monitoring').child('Power-Factor');
+  var kwh = db.ref('PowerMetering/Home-Monitoring').child('Power-Consumption');
+
+  daya_s.limitToLast(1).on('value', function(snapshot){
+    snapshot.forEach(function(childSnapshot) {
+      var childData = childSnapshot.val();
+      dayas.innerHTML = childData;
+      console.log("DYAS:" + childData)
+    });
   });
-  db.on('value', function(snap2){
-    if(snap2.exists()){
-      var dayaph = snap2.child('Apparent-Power').val();
-      document.getElementById("daya_s").innerHTML = dayaph;
-      console.log(dayaph);
-      
-    }
+  watt.limitToLast(1).on('value', function(snapshot){
+    snapshot.forEach(function(childSnapshot) {
+      var childData = childSnapshot.val();
+      idwatt.innerText = childData;
+      console.log("WATT:" + childData)
+    });
   });
-  db.on('value', function(snap3){
-    if(snap3.exists()){
-      var tegang = snap3.child('Vrms').val();
-      document.getElementById("tegangan").innerHTML = tegang;
-      console.log(tegang);
-      
-    }
+  volt.limitToLast(1).on('value', function(snapshot){
+    snapshot.forEach(function(childSnapshot) {
+      var childData = childSnapshot.val();
+      idvolt.innerText = childData;
+      console.log("Tegangan:" + childData)
+    });
   });
-  db.on('value', function(snap4){
-    if(snap4.exists()){
-      var arus = snap4.child('Irms').val();
-      document.getElementById("arus").innerHTML = arus;
-      console.log(arus);
-      
-    }
+  arus.limitToLast(1).on('value', function(snapshot){
+    snapshot.forEach(function(childSnapshot) {
+      var childData = childSnapshot.val();
+      idarus.innerText = childData;
+      console.log("Arus:" + childData)
+    });
   });
-  db.on('value', function(snap5){
-    if(snap5.exists()){
-      var cospi = snap5.child('Power-Factor').val();
-      document.getElementById("cospi").innerHTML = cospi;
-      console.log(cospi);
-      
-    }
+  cospi.limitToLast(1).on('value', function(snapshot){
+    snapshot.forEach(function(childSnapshot) {
+      var childData = childSnapshot.val();
+      idcospi.innerText = childData;
+      console.log("Cospi:" + childData)
+    });
   });
-  db.on('value', function(snap6){
-    if(snap6.exists()){
-      var powercun = snap6.child('Apparent-Power').val();
-      document.getElementById("pemakaian").innerHTML = powercun;
-      console.log('PowerConsum' + powercun);
-      
-    }
+  kwh.limitToLast(1).on('value', function(snapshot){
+    snapshot.forEach(function(childSnapshot) {
+      var childData = childSnapshot.val();
+      idkwh.innerText = childData;
+      console.log("KwH:" + childData)
+    });
   });
-  db.on('value', function(snap7){
-    if(snap7.exists()){
-      var biaya = snap7.child('Cost').val();
-      document.getElementById("biaya").innerHTML = biaya;
-      console.log('biaya'+ biaya);
-      
-    }
-  });
-                    
 }
     window.onload = function () {
           monitor();  

@@ -2,16 +2,16 @@ function tegangan(){
 
     var dt = new Date();
     var hari = dt.getFullYear()+'-'+dt.getHours()+':'+dt.getMinutes()+':'+dt.getSeconds()
-    console.log(hari)
+    console.log(dt)
     // dt = ($rootScope.charts.mainChart.labels.push(dt.getDate() + "-" + (dt.getMonth() + 1)));
     var ctx = document.getElementById('myChart').getContext('2d');
     var myChart = new Chart(ctx, {
         type: 'line',
         values:'Tegangan',
         data: {
-            labels: ["Tegangan"],
+            labels: [hari],
             datasets: [{
-                label:'Tegangan',
+                label: "Tegangan",
                 data: [{}],
                 backgroundColor: [
                 'rgba(255, 99, 132, 0.2)'],
@@ -43,20 +43,14 @@ function tegangan(){
                         content: 'Test label'
                     }
                     }]
-                },
-                scales: {
-                    display:true,
-                    xAxes: {
-                        type: 'datetime',
-                        distribution:'linear'
-                        }
-                    }
                 }
-        }
-    )
+            }
+    })
 
     function addData(chart, label, data) {
-        chart.data.labels.push(label);
+        var today = new Date();
+        var time = today.getFullYear()+'-'+today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+        myChart.data.labels.push(time);
         chart.data.datasets.forEach((dataset) => {
             dataset.data.push(data);
         });
@@ -69,12 +63,16 @@ function tegangan(){
         };
         chart.update();
     }
-    var valueRef = firebase.database().ref('PowerMetering/Home-Monitoring').child('Vrms');
+    var valueRef = firebase.database().ref('PowerMetering/Home-Monitoring').child('Vrms').limitToLast(1);
+    var today = new Date();
+    var time = today.getFullYear()+'-'+today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
     valueRef.on('value', function(snapshot) {
-        // removeData(myChart);
-        updateScale(myChart);
-        addData(myChart,hari,snapshot.val());
-        console.log(myChart)
+        snapshot.forEach(function(childSnapshot) {
+            var childData = childSnapshot.val();
+            updateScale(myChart);
+            addData(myChart,time,childData);
+            console.log(myChart)
+        })
     });
 
 }

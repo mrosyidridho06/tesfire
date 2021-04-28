@@ -14,32 +14,22 @@
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/locale/id.min.js"></script> -->
     <script defer src="/__/firebase/8.2.6/firebase-database.js"></script>
     <script defer src="/__/firebase/8.2.6/firebase-auth.js"></script>
-    <!-- <script src="https://code.highcharts.com/highcharts.js"></script>
-    <script src="https://code.highcharts.com/stock/modules/exporting.js"></script>
-    <script src="https://code.highcharts.com/stock/modules/export-data.js"></script> -->
-    <link rel="stylesheet" href="sidebar.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <!-- <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet"> -->
-     <!-- The core Firebase JS SDK is always required and must be listed first -->
      <script src="/__/firebase/8.2.6/firebase-app.js"></script>
-
+     <link rel="stylesheet" href="sidebar.css">
      <!-- TODO: Add SDKs for Firebase products that you want to use
       https://firebase.google.com/docs/web/setup#available-libraries -->
      <script src="/__/firebase/8.2.6/firebase-analytics.js"></script>
- 
+     <script src="https://cdn.jsdelivr.net/npm/moment@2.24.0/min/moment.min.js"></script>
+     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+     <!-- <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-streaming@1.8.0"></script> -->
      <!-- Initialize Firebase -->
      <script src="/__/firebase/init.js"></script>
      <!-- <script src="https://www.gstatic.com/firebasejs/8.2.6/firebase-auth.js"></script> -->
      <script src="aru1.js" ></script>
      <!-- <script type="module" src="aru1.js"></script> -->
-     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.min.js"></script>
-     <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script> -->
-    <!-- <script src="arus.js"></script> -->
-    <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script> -->
-    <!-- <script src="https://static.fusioncharts.com/code/latest/fusioncharts.js"></script>
-    <script type="http://static.fusioncharts.com/code/latest/fusioncharts.charts.js"></script> -->
-    <!-- <script type="module" src="./moment/moment.js"></script> -->
+     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.min.js"></script> -->
 
 
     <!-- <script src="tesarus.js"></script> -->
@@ -155,9 +145,12 @@
                         <h1 class="h2">Arus</h1>
                     </div>
                     <div class="container">
+                        <div class="container-fluid">
+                            <canvas id="myChart"></canvas>
+                        </div>
 
                             <!-- <div id="chart-arus"></div> -->
-                            <canvas id="myChart"></canvas>
+                            
                             <!-- <div id="chart-arus" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto left"></div> -->
                         
                         <!-- <footer class="text-center  fixed-bottom">&copy; 2021 CV. Planet Intelligent</footer> -->
