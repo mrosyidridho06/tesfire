@@ -8,7 +8,7 @@ function arus(){
             labels: [hari],
             datasets: [{
                 label:'Arus',
-                data:[{}],
+                data:[],
                 backgroundColor: [
                 'rgba(255, 99, 132, 0.2)'],
                 borderColor: [
@@ -60,7 +60,7 @@ function arus(){
         };
         chart.update();
     }
-    var valueRef = firebase.database().ref('PowerMetering/Home-Monitoring').child('Irms').limitToLast(10);
+    var valueRef = firebase.database().ref('PowerMetering/Home-Monitoring').child('Irms').limitToLast(20);
     valueRef.on('value', function(snapshot) {
         snapshot.forEach(function(childSnapshot) {
             var arusdata = childSnapshot.val();

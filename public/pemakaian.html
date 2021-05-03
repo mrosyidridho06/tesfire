@@ -28,7 +28,7 @@
 
     <!-- Initialize Firebase -->
     <script src="/__/firebase/init.js"></script>
-    <!-- <script src="https://www.gstatic.com/firebasejs/8.2.6/firebase-auth.js"></script> -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.6/firebase-auth.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
     <script src="pemakaian.js"></script>
 
@@ -129,6 +129,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
                         <li class="nav-item">
+                            <p id="namaUser"></p>
                             <a class="nav-link" href="#">Sign Out</a>
                         </li>
                     </ul>
@@ -154,26 +155,28 @@
                         </div>
                     </div>
                     <table class="table table-hover table-fixed" id="myTable">
-                        <tr>
-                            <th>Apparent Power (VA)</th>
-                            <th>Real Power (Watt)</th>
-                            <th>Voltage (Vrms)</th>
-                            <th>Current (Irms)</th>
-                            <th>Power Factor</th>
-                            <th>Power Consumption (WattHour)</th>
-                            <th>Cost (Rp.)</th>
-                        </tr>
-
-                        <tr>
-                            <td id="daya_s" align="center"></td>
-                            <td id="daya_p" align="center"></td>
-                            <td id="tegangan" align="center"></td>
-                            <td id="arus" align="center"></td>
-                            <td id="cospi" align="center"></td>
-                            <td id="pemakaian" align="center"></td>
-                            <td id="biaya" align="center"></td>
-                        </tr>
-
+                        <thead>
+                            <tr>
+                                <th>Apparent Power (VA)</th>
+                                <th>Real Power (Watt)</th>
+                                <th>Voltage (Vrms)</th>
+                                <th>Current (Irms)</th>
+                                <th>Power Factor</th>
+                                <th>Power Consumption (WattHour)</th>
+                                <th>Cost (Rp.)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td id="daya_s" align="center"></td>
+                                <td id="daya_p" align="center"></td>
+                                <td id="tegangan" align="center"></td>
+                                <td id="arus" align="center"></td>
+                                <td id="cospi" align="center"></td>
+                                <td id="pemakaian" align="center"></td>
+                                <td id="biaya" align="center"></td>
+                            </tr>
+                        </tbody>
                     </table>
                 </div>
                 <footer class="text-center fixed-bottom">&copy; 2021 CV. Planet Intelligent</footer>
@@ -181,7 +184,7 @@
             
         </div>
         <!-- page-wrapper -->
-        <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
             integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
             crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
@@ -189,13 +192,13 @@
             crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
             integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-            crossorigin="anonymous"></script> -->
-        <!-- <script>
+            crossorigin="anonymous"></script>
+        <script>
             $("#menu-toggle").click(function (e) {
                 e.preventDefault();
                 $("#wrapper").toggleClass("toggled");
             });
-        </script> -->
+        </script>
 </body>
 
 </html>
